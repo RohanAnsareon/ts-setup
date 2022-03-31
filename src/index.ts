@@ -1,13 +1,11 @@
+import AppComponent from "./components/app-component";
 import { getElement, insertElementInto } from "./utils";
+import './style.scss';
 
-const root = getElement('#root') as HTMLDivElement;
+const root = getElement('#root');
 
-const ListComponent = (items: string[]) => {
-    return `
-        <ul>
-            ${items.map(i => `<li>${i}</li>`).join('\n')}
-        </ul>
-    `;
+if (root) {
+    insertElementInto(root, AppComponent());
+} else {
+    console.error('There is not root element, check index.html file.');
 }
-
-insertElementInto(root, ListComponent(['Hi', 'My name is', 'Rohan']));
